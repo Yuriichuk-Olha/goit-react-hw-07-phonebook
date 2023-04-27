@@ -1,5 +1,6 @@
 // import { Route, Routes } from "react-router-dom";
-// import Phonebook from "./Phonebook/Phonebook";
+import { Route, Routes } from "react-router-dom";
+import Phonebook from "./Phonebook/Phonebook";
 
 export const App = () => {
   return (
@@ -13,10 +14,10 @@ export const App = () => {
         color: '#010101'
       }}
     >
-     {/* <Routes>
+     <Routes>
       <Route path="/" element={<Phonebook/>} />
       
-     </Routes> */}
+     </Routes>
     </div>
   );
 };

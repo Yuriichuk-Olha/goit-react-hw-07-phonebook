@@ -1,33 +1,34 @@
-// import { useSelector } from 'react-redux';
-// import { useDispatch } from 'react-redux';
-// import { deletContact } from 'redux/slice';
-// import css from 'components/ContactList/ContactList.module.css';
+import { useDispatch, useSelector } from 'react-redux';
+import css from 'components/ContactList/ContactList.module.css';
+import { deleteContactsThunk } from 'contacts/thunk';
 
+const ContactList = () => {
+  const dispatch = useDispatch()
+  const contacts  = useSelector(state=>state.contacts)
+  console.log(contacts)
 
-// const ContactList = () => {
-//   const { contacts, filter } = useSelector(state=>state.contacts)
-//   const dispatch = useDispatch()
- 
-//   const contactS = () => {
-//     const normalizedFilter = filter.toLowerCase();
-//     return contacts.filter(contact => contact.name.toLowerCase().includes(normalizedFilter));
-//   }
+  const filter = useSelector(state=>state.filter)
+ console.log(filter)
+  const contactS = () => {
+  const normalizedFilter = filter.toLowerCase();
+    return contacts.filter(contact => contact.name.toLowerCase().includes(normalizedFilter));
+  }
   
 
-//   return (
-//   <ul className={css.contactItem}>
-//     {contactS().map(({ id, name, number }) => (
-//       <li className={css.contactList} key={id}>
-//         <p className={css.contactName}>{name}</p>
-//         <p className={css.contactNumber}>{number}</p>
-//         <button className={css.button} 
-//         onClick={() => dispatch(deletContact({id}))}>
-//           Delete
-//         </button>
-//       </li>
-//     ))}
-//   </ul>
-//   )
-// }
+  return (
+  <ul className={css.contactItem}>
+    {contactS().map(({ id, name, number }) => (
+      <li className={css.contactList} key={id}>
+        <p className={css.contactName}>{name}</p>
+        <p className={css.contactNumber}>{number}</p>
+        <button className={css.button} 
+        onClick={() => dispatch(deleteContactsThunk(id))}>
+          Delete
+        </button>
+      </li>
+    ))}
+  </ul>
+  )
+}
 
-// export default ContactList
+export default ContactList;
