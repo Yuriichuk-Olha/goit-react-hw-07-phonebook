@@ -1,6 +1,6 @@
 import { createSlice, isAnyOf } from "@reduxjs/toolkit";
 import { createContactsThunk, deleteContactsThunk, getContactsThunk } from "./thunk";
-import { initialStateContacts } from "./initial";
+import { initialState } from "./initial";
 
 const arrThunks = [getContactsThunk, createContactsThunk, deleteContactsThunk]
 
@@ -22,15 +22,15 @@ const handelFulfilled = (state) => {
 
 const handelFulfilledGet = (state,{payload})=>{
     //handelFulfilled(state)
-    state.contacts=payload
+    state.items = payload
 }
 const handelFulfilledCreate = (state,{payload})=>{
      //handelFulfilled(state)
-    state.contacts.push(payload)
+    state.items.push(payload)
 }
 const handelFulfilledDelete = (state,{payload})=>{
    //handelFulfilled(state)
-    state.contacts = state.contacts.filter(el=>el.id!==payload.id)
+    state.items = state.items.filter(el=>el.id!==payload.id)
 }
 const handleRejected = (state,{payload})=>{
     state.isLoading=false
@@ -41,7 +41,7 @@ const handleRejected = (state,{payload})=>{
 
 export const contactsSlice = createSlice({
     name:'contacts',
-    initialState: initialStateContacts,
+    initialState,
     reducers:{
         setFilter:(state, action)=>{
             state.filter = action.payload

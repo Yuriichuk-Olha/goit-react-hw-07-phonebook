@@ -11,7 +11,7 @@ const Contacts = ()=> {
     dispatch(getContactsThunk())
   }, [dispatch])
 
-  const contacts  = useSelector(state=>state.contacts)
+  const contacts  = useSelector(state=>state.items)
   
   const handleChange = (e) =>{
     const valueName = e.currentTarget.value
@@ -28,8 +28,7 @@ const Contacts = ()=> {
       form.reset()
   }
 
-      return (
-      
+      return (     
         <form className={css.container}  onSubmit={handleSubmit}>
           <div>
             <label className={css.contactName} htmlFor="name">
@@ -43,7 +42,7 @@ const Contacts = ()=> {
               pattern="^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$"
               required
               onChange={handleChange}
-              value={contacts.name}
+              // value={contacts.name}
             />
           </div>
           <div>
@@ -58,7 +57,7 @@ const Contacts = ()=> {
               title="Phone number must be digits and can contain spaces, dashes, parentheses and can start with +"
               required
               onChange={handleChange}
-              value={contacts.number}
+              // value={contacts.number}
             />
           </div>
           <button className={css.btn} type="submit">

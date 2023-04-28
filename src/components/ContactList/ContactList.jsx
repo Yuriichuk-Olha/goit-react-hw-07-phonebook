@@ -4,13 +4,13 @@ import { deleteContactsThunk } from 'contacts/thunk';
 
 const ContactList = () => {
   const dispatch = useDispatch()
-  const contacts  = useSelector(state=>state.contacts)
-  console.log(contacts)
+  const contacts  = useSelector(state=>state.items)
+  // console.log(contacts)
 
   const filter = useSelector(state=>state.filter)
 //  console.log(filter, 'filter')
   const contactS = () => {
-  const normalizedFilter = filter.toLowerCase();
+    const normalizedFilter = filter.toLowerCase();
     return contacts.filter(contact => contact.name.toLowerCase().includes(normalizedFilter));
   }
   
